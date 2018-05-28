@@ -1,12 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
+
 
 namespace LibraryService
 {
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
     public class LibraryService : ILibraryService
     {
-        private static int currID = 0;
-        private static List<Book> books = new List<Book>();
+        private int currID = 0;
+        private List<Book> books = new List<Book>();
 
         int? ILibraryService.AddBook(Book book)
         {
